@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% extends "_base.html" %}
+{% load static %}
+<html>
+<head>
+
+</head>
+<body>
+    <header>
+
+    </header>
+
+    <main>
+        {% block content %}
+        <div class="leaderboard_body">
+            <div class="leaderboard_main">
+                <div class="leaderboard_header">
+                    <h1>Average Time</h1>
+                </div>
+                <div class="leaderboard">
+                    <table>
+                      <tr>
+                        <td class="leaderboard_number">1</td>
+                        <td class="leaderboard_name">Lee Taeyong</td>
+                        <td class="leaderboard_points">258.244</td>
+                      </tr>
+                      <tr>
+                        <td class="leaderboard_number">2</td>
+                        <td class="leaderboard_name">Mark Lee</td>
+                        <td class="leaderboard_points">258.242</td>
+                      </tr>
+                      <tr>
+                        <td class="leaderboard_number">3</td>
+                        <td class="leaderboard_name">Xiao Dejun</td>
+                        <td class="leaderboard_points">258.223</td>
+                      </tr>
+                      <tr>
+                        <td class="leaderboard_number">4</td>
+                        <td class="leaderboard_name">Qian Kun</td>
+                        <td class="leaderboard_points">258.212</td>
+                      </tr>
+                      <tr>
+                        <td class="leaderboard_number">5</td>
+                        <td class="leaderboard_name">Johnny Suh</td>
+                        <td class="leaderboard_points">258.208</td>
+                      </tr>
+                    </table>
+                </div>
+            </div>
+      </div>
+
+
+
+        {% if player_list %}
+            <ul>
+            {% for player in player_list %}
+                <li><a href="/leaderboard/{{ player.id }}/">{{ player.name }}</a></li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No players are available.</p>
+        {% endif %}
+        {% endblock %}
+    </main>
+</body>
+</html>

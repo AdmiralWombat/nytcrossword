@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    {% block title %}
+        <meta charset="UTF-8">
+        <title>NYT Crossword Leaderboard</title>
+        <link rel="stylesheet" href="{% static 'leaderboard/style.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap"
+              rel="stylesheet"
+        />
+    {% endblock %}
+</head>
+<body>
+    <header>
+        {% block navbar %}
+        <nav>
+            <div class="nav">
+                <ul id="nav" class="nav_list">
+                    <li class="nav_home"><a href='/leaderboard'><i class="material-symbols-outlined">home</i></a></li>
+                    <li class="nav_list_item"><a href='/leaderboard/calendar'>Calendar</a></li>
+                    <li class="nav_list_item"><a href='/leaderboard/graph'>Graph</a></li>
+                </ul>
+            </div>
+        </nav>
+        {% endblock %}
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% extends "_base.html" %}
+{% load static %}
+<html>
+<head>
+
+</head>
+<body>
+    <header>
+
+    </header>
+
+    <main>
+        {% block content %}
+
+            <div class="leaderboard_body">
+            <div class="leaderboard_main">
+                <div class="leaderboard_link_header_body">
+                <div class="leaderboard_link_header_main">
+                    <div class="leaderboard_link">
+                        <a href="/leaderboard/?id=2">Worst</a>
+                        <a href="/leaderboard/?id=1">Best</a>
+                        <a href="/leaderboard/?id=0">Average</a>
+                    </div>
+                </div>
+                </div>
+
+                <div class="leaderboard_header">
+                    <h1>{{ type }}</h1>
+                </div>
+
+                <div class="leaderboard">
+                    <table>
+                        {% if time_1_name %}
+                      <tr>
+                        <td class="leaderboard_number">1</td>
+                        <td class="leaderboard_name"><a href="/leaderboard/{{ time_1_id }}/">{{ time_1_name }}</a></td>
+                        <td class="leaderboard_points">{{ time_1_score }}</td>
+                      </tr>
+                        {% endif %}
+                        {% if time_2_name %}
+                      <tr>
+                        <td class="leaderboard_number">2</td>
+                        <td class="leaderboard_name"><a href="/leaderboard/{{ time_2_id }}/">{{ time_2_name }}</a></td>
+                        <td class="leaderboard_points">{{ time_2_score }}</td>
+                      </tr>
+                        {% endif %}
+                        {% if time_3_name %}
+                      <tr>
+                        <td class="leaderboard_number">3</td>
+                        <td class="leaderboard_name"><a href="/leaderboard/{{ time_3_id }}/">{{ time_3_name }}</a></td>
+                        <td class="leaderboard_points">{{ time_3_score }}</td>
+                      </tr>
+                        {% endif %}
+                        {% if time_4_name %}
+                      <tr>
+                        <td class="leaderboard_number">4</td>
+                        <td class="leaderboard_name"><a href="/leaderboard/{{ time_4_id }}/">{{ time_4_name }}</a></td>
+                        <td class="leaderboard_points">{{ time_4_score }}</td>
+                      </tr>
+                        {% endif %}
+                        {% if time_5_name %}
+                      <tr>
+                        <td class="leaderboard_number">5</td>
+                        <td class="leaderboard_name"><a href="/leaderboard/{{ time_5_id }}/">{{ time_5_name }}</a></td>
+                        <td class="leaderboard_points">{{ time_5_score }}</td>
+                      </tr>
+                        {% endif %}
+                    </table>
+                </div>
+            </div>
+            </div>
+
+        {% endblock %}
+    </main>
+</body>
+</html>
