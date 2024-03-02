@@ -3,7 +3,10 @@ from django.shortcuts import get_object_or_404, render
 from django.http import Http404
 import datetime as dt
 from datetime import time
+from datetime import date
+from datetime import timedelta
 from datetime import datetime
+import calendar
 import pandas as pd
 from django.db.models import F, Avg
 from django.views import generic
@@ -21,16 +24,32 @@ def get_date(req_day):
         return date(year, month, day=1)
     return datetime.today()
 
+def prev_month(d_obj):
+    first = d_obj.replace(day=1)
+    prev_month = first - timedelta(days=1)
+    month = 'month=' + str(prev_month.year) + '-' + str(prev_month.month)
+    return month
+
+def next_month(d_obj):
+    days_in_month = calendar.monthrange(d_obj.year, d_obj.month)[1]
+    last = d_obj.replace(day=days_in_month)
+    next_month = last + timedelta(days=1)
+    month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
+    return month
+
 class CalendarView(generic.ListView):
     model = Score
     template_name = 'leaderboard/calendar.html'
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
-        d = get_date(self.request.GET.get('day', None))
+        d = get_date(self.request.GET.get('month', None))
         cal = Calendar(d.year, d.month)
 
         html_cal = cal.formatmonth(withyear=True)
         context['calendar'] = mark_safe(html_cal)
+        context['prev_month'] = prev_month(d)
+        context['next_month'] = next_month(d)
+
         return context
 
 def get_top_5_time_averages():
